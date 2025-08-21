@@ -35,7 +35,7 @@ namespace SlimePirates.Mechanics
         Vector2 move;
         SpriteRenderer spriteRenderer;
         internal Animator animator;
-        public PlatformerModel model = new PlatformerModel() { jumpDeceleration = 0.9f, jumpModifier = 0f };
+        public PlatformerModel model = new PlatformerModel() { jumpDeceleration = 0f, jumpModifier = 0.9f };
 
         private CharacterController controller;
 
@@ -152,6 +152,7 @@ namespace SlimePirates.Mechanics
             if (jump && IsGrounded)
             {
                 velocity.y = jumpTakeOffSpeed * model.jumpModifier;
+                Debug.LogError(velocity.y);
                 jump = false;
                 IsDoubleJump = false;
                 animator.SetBool("isDoubleJump", IsDoubleJump);
